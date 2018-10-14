@@ -1,0 +1,120 @@
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "alldaydevops",
+            "intents": [
+                {
+                    "name": "AMAZON.FallbackIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.NavigateHomeIntent",
+                    "samples": []
+                },
+                {
+                    "name": "DeployCluster",
+                    "slots": [],
+                    "samples": [
+                        "Create a new cluster",
+                        "Deploy a Docker cluster",
+                        "Create a Docker cluster",
+                        "Deploy a cluster",
+                        "Create a cluster",
+                        "Deploy a new swarm cluster"
+                    ]
+                },
+                {
+                    "name": "ClusterSize",
+                    "slots": [
+                        {
+                            "name": "size",
+                            "type": "AMAZON.NUMBER"
+                        }
+                    ],
+                    "samples": [
+                        "I want {size} instances",
+                        "I want {size} nodes",
+                        "{size} instances",
+                        "{size} nodes",
+                        "{size}",
+                        "I want {size}"
+                    ]
+                },
+                {
+                    "name": "ClusterName",
+                    "slots": [
+                        {
+                            "name": "cluster",
+                            "type": "cluster"
+                        }
+                    ],
+                    "samples": [
+                        "Call it {cluster}",
+                        "{cluster}",
+                        "Name it {cluster}"
+                    ]
+                },
+                {
+                    "name": "DeployContainer",
+                    "slots": [],
+                    "samples": [
+                        "Deploy my container",
+                        "Deploy my application"
+                    ]
+                },
+                {
+                    "name": "ChooseCluster",
+                    "slots": [
+                        {
+                            "name": "cluster",
+                            "type": "cluster"
+                        }
+                    ],
+                    "samples": [
+                        "Deploy the application to {cluster} cluster",
+                        "Deploy it to {cluster}"
+                    ]
+                }
+            ],
+            "types": [
+                {
+                    "name": "cluster",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "alldaydevops"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "production"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "sandbox"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "staging"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}
