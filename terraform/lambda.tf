@@ -2,7 +2,7 @@ resource "aws_lambda_function" "lambda_create_infrastructure" {
   filename      = "../create/deployment.zip"
   function_name = "CreateInfrastructure"
   role          = "${aws_iam_role.iam_for_lambda_create.arn}"
-  handler       = "main"
+  handler       = "create/main"
   runtime       = "go1.x"
   timeout       = 60
 
@@ -22,7 +22,7 @@ resource "aws_lambda_function" "lambda_provision_infrastructure" {
   filename      = "../provision/deployment.zip"
   function_name = "ProvisionInfrastructure"
   role          = "${aws_iam_role.iam_for_lambda_provision.arn}"
-  handler       = "main"
+  handler       = "provision/main"
   runtime       = "go1.x"
   timeout       = 120
 
