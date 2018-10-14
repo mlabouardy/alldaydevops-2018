@@ -3,3 +3,5 @@
 .terraform
 variables.tfvars
 deployment.zip
+demo
+.DS_STORE

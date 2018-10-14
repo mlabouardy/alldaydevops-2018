@@ -199,7 +199,7 @@ func getCommandOutput(instanceId string, commandId string) (CommandOutput, error
 }
 
 func deployContainer(instanceId string) (string, error) {
-	commandId, err := executeCommand([]string{instanceId}, `docker service create -d --name nginx -p 80:80 nginx`)
+	commandId, err := executeCommand([]string{instanceId}, `docker service create -d --name alldaydevops2018 -p 80:3000 mlabouardy/alldaydevops2018`)
 	if err != nil {
 		return "", err
 	}
