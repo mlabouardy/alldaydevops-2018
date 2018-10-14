@@ -2,12 +2,9 @@ package utils
 
 import (
 	"encoding/json"
-	"errors"
 	"fmt"
 	"log"
 	"os"
-	"strings"
-	"time"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/aws/external"
@@ -198,21 +195,9 @@ func getCommandOutput(instanceId string, commandId string) (CommandOutput, error
 	}, nil
 }
 
-func deployContainer(instanceId string) (string, error) {
-	commandId, err := executeCommand([]string{instanceId}, `docker service create -d --name alldaydevops2018 -p 80:3000 mlabouardy/alldaydevops2018`)
-	if err != nil {
-		return "", err
-	}
-	time.Sleep(time.Second * 5)
-	output, err := getCommandOutput(instanceId, commandId)
-	if err != nil {
-		return "", err
-	}
-	if output.Status != ssm.CommandInvocationStatusSuccess {
-		log.Println(output)
-		return "", errors.New("Cannot deploy the container")
-	}
-	return strings.TrimSpace(output.Output), nil
+func deployContainer(instanceId string) error {
+	_, err := executeCommand([]string{instanceId}, `docker service create -p 80:3000 --name alldaydevops2018 mlabouardy/alldaydevops2018`)
+	return err
 }
 
 func DeployApplication(name string) error {
@@ -240,11 +225,10 @@ func DeployApplication(name string) error {
 		log.Fatal(err)
 	}
 
-	output, err := deployContainer(*res.Items[0]["ManagerID"].S)
+	err = deployContainer(*res.Items[0]["ManagerID"].S)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	log.Println(output)
 	return nil
 }
