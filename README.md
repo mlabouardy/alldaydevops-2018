@@ -1,4 +1,10 @@
 
+# Setup
+
+```
+$ ./build.sh
+$ cd terrafrom && terraform init && terraform apply
+```
 
 # Lambda Functions
 

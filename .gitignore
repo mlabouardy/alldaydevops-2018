@@ -1,0 +1,5 @@
+*.tfstate
+*.backup
+.terraform
+variables.tfvars
+deployment.zip

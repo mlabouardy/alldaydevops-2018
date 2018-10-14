@@ -5,22 +5,28 @@
             "Sid": "1",
             "Effect": "Allow",
             "Action": [
-                "sqs:*",
-                "dynamodb:UpdateItem"
+                "iam:PassRole",
+                "dynamodb:PutItem",
+                "dynamodb:Scan",
+                "sqs:SendMessage",
+                "sqs:SetQueueAttributes"
             ],
             "Resource": [
-                "arn:aws:sqs:AWS_REGION:ACCOUNT_ID:clusters",
-                "arn:aws:dynamodb:AWS_REGION:ACCOUNT_ID:table/clusters"
+                "arn:aws:sqs:*:*:clusters",
+                "arn:aws:iam::*:role/SwarmClusterSSMRole",
+                "arn:aws:dynamodb:*:*:table/clusters"
             ]
         },
         {
             "Sid": "2",
             "Effect": "Allow",
             "Action": [
-                "ssm:SendCommand",
                 "logs:CreateLogStream",
+                "ec2:CreateTags",
+                "ec2:RunInstances",
                 "logs:CreateLogGroup",
                 "logs:PutLogEvents",
+                "ssm:SendCommand",
                 "ssm:GetCommandInvocation"
             ],
             "Resource": "*"
