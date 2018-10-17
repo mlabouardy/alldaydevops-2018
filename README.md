@@ -1,3 +1,6 @@
+# Talk
+
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/lXU2GbstE_4/0.jpg)](https://youtu.be/lXU2GbstE_4?t=5414)
 
 # Setup
 
